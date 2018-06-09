@@ -1,0 +1,63 @@
+<%= form_for @aluno, :html => { :class => "form-horizontal aluno" } do |f| %>
+
+  <% if @aluno.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@aluno.errors.count, "error") %> prohibited this aluno from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @aluno.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="jumbotron" style="
+      padding-left: 20px;
+      padding-top: 20px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+      width: 340px;
+      margin-bottom: 0px;
+      ">
+    <div class="form-group">
+      <label for="aluno_nome">Nome:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 320px;">
+        <%= f.text_field :nome, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="aluno_matricula">Matricula:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.number_field :matricula, :class => "form-control", 
+            :oninput => "javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);",
+            :maxlength => "7" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="aluno_email">Email:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.text_field :email, :class => 'form-control', :placeholder => "nome@exemplo.com" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="aluno_telefone">Telefone:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.text_field :telefone, :class => 'form-control', :maxlength => "16", 
+        :placeholder => "(00) 0-0000-0000" %>
+      </div>
+    </div>
+    </br>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-10" style="padding-left: 0px;width: 250px;margin-left: 0px">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  root_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

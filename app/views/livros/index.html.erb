@@ -1,0 +1,41 @@
+<%- model_class = Livro -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th><%= model_class.human_attribute_name(:titulo) %></th>
+      <th><%= model_class.human_attribute_name(:autor) %></th>
+      <th><%= model_class.human_attribute_name(:codigo) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% n = 0%>
+    <% @livros.each do |livro| %>
+      <tr>
+        <td><%= n += 1 %></td>
+        <td><%= livro.titulo %></td>
+        <td><%= livro.autor %></td>
+        <td><%= livro.codigo %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      livro_path(livro), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_livro_path(livro), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      livro_path(livro),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div><%= paginate @livros %></div>
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+            root_path,
+            :class => 'btn btn-primary' %>

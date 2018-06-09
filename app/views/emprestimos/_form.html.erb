@@ -1,0 +1,69 @@
+<%= form_for @emprestimo, :html => { :class => "form-horizontal emprestimo" } do |f| %>
+
+  <% if @emprestimo.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@emprestimo.errors.count, "error") %> prohibited this emprestimo from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @emprestimo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :aluno, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :aluno, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:aluno) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :matricula, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :matricula, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:matricula) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :livro, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :livro, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:livro) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :codigo, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :codigo, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:codigo) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :data_emprestimo, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :data_emprestimo, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:data_emprestimo) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :data_devoluncao, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :data_devoluncao, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:data_devoluncao) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                emprestimos_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

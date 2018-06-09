@@ -1,0 +1,30 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+pt-BR:
+  breadcrumbs:
+    application:
+      root: "Index"
+    pages:
+      pages: "Pages"
+  helpers:
+    actions: "Actions"
+    links:
+      show: "Visualizar"
+      back: "Voltar"
+      cancel: "Cancelar"
+      confirm: "Você tem certeza? Todos os dados seram deletados"
+      destroy: "Excluir"
+      new: "New"
+      edit: "Editar"
+    titles:
+      edit: "Editar %{model}"
+      save: "Save %{model}"
+      new: "Novo %{model}"
+      delete: "Apagar %{model}"
+  date:
+    datepicker:
+      dformat: '%d/%m/%Y'
+      pformat: 'DD/MM/YYYY'
+
+  

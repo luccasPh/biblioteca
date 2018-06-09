@@ -1,0 +1,61 @@
+<%- model_class = Emprestimo -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+
+<%= form_for @emprestimo, :html => { :class => "form-horizontal emprestimo" } do |f| %>
+  <% if @emprestimo.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@emprestimo.errors.count, "error") %> prohibited this emprestimo from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @emprestimo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="jumbotron" style="
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    width: 340px;
+    margin-bottom: 0px;
+    ">
+    <div class="form-group">
+      <label for="emprestimo_matricula">Matricula:</label>
+      <div class="col-lg-7" style="padding-left: 0px;width: 250px;">
+        <%= f.number_field :matricula, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:matricula) %>
+    </div>
+    <div class="form-group">
+      <label for="emprestimo_codigo">Codigo:</label>
+      <div class="col-lg-7" style="padding-left: 0px;width: 250px;">
+        <%= f.text_field :codigo, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:codigo) %>
+    </div>
+    <div class="form-group">
+      <label for="emprestimo_data_da_devoluncao">Data da devoluncao:</label>
+      <div class="col-lg-7" style="padding-left: 0px;width: 250px;">
+        <%= f.date_field :data_devoluncao, :class => 'form-control'%>
+      </div>
+      <%=f.error_span(:data_devoluncao) %>
+    </div>
+    </br>
+    <div class="form-group">
+      <div class="">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  root_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aluno: MyString
+  matricula: MyString
+  livro: MyString
+  codigo: 1
+  data_emprestimo: 2018-06-03
+  data_devoluncao: 2018-06-03
+
+two:
+  aluno: MyString
+  matricula: MyString
+  livro: MyString
+  codigo: 1
+  data_emprestimo: 2018-06-03
+  data_devoluncao: 2018-06-03

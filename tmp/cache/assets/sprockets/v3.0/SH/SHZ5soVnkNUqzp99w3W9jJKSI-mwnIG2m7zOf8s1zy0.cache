@@ -1,0 +1,12 @@
+I"ã(function() {
+  $(document.on("focus", "[data-behavior ~ = 'datepicker']", function(e) {
+    $(this.datepicker);
+    return {
+      formato: "dd-mm-aaaa",
+      weekStart: 1,
+      autoclose: true
+    };
+  }));
+
+}).call(this);
+:ET
