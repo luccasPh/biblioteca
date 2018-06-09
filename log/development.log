@@ -24952,3 +24952,107 @@ Processing by BemVindoController#index as HTML
 Completed 200 OK in 566ms (Views: 558.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-06-09 11:24:11 -0300
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/web-console-3.6.2/lib/web_console/middleware.rb:135
+Processing by BemVindoController#index as HTML
+  Rendering bem_vindo/index.html.erb within layouts/application
+  Rendered bem_vindo/index.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 3570ms (Views: 3532.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/emprestimos/new" for 127.0.0.1 at 2018-06-09 11:24:30 -0300
+Processing by EmprestimosController#new as HTML
+  Rendering emprestimos/new.html.erb within layouts/application
+  Rendered emprestimos/new.html.erb within layouts/application (231.5ms)
+Completed 200 OK in 989ms (Views: 912.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/emprestimos" for 127.0.0.1 at 2018-06-09 11:24:34 -0300
+Processing by EmprestimosController#index as HTML
+  Rendering emprestimos/index.html.erb within layouts/application
+  [1m[36mEmprestimo Load (20.5ms)[0m  [1m[34mSELECT  "emprestimos".* FROM "emprestimos" LIMIT ? OFFSET ?[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/emprestimos/index.html.erb:19
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "emprestimos"[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/kaminari-activerecord-1.1.1/lib/kaminari/activerecord/active_record_relation_methods.rb:33
+  Rendered emprestimos/index.html.erb within layouts/application (187.5ms)
+Completed 200 OK in 838ms (Views: 718.5ms | ActiveRecord: 21.1ms)
+
+
+Started GET "/emprestimos/48" for 127.0.0.1 at 2018-06-09 11:24:37 -0300
+Processing by EmprestimosController#show as HTML
+  Parameters: {"id"=>"48"}
+  [1m[36mEmprestimo Load (0.7ms)[0m  [1m[34mSELECT  "emprestimos".* FROM "emprestimos" WHERE "emprestimos"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/controllers/emprestimos_controller.rb:88
+  Rendering emprestimos/show.html.erb within layouts/application
+  Rendered emprestimos/show.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 560ms (Views: 511.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/emprestimos" for 127.0.0.1 at 2018-06-09 11:24:40 -0300
+Processing by EmprestimosController#index as HTML
+  Rendering emprestimos/index.html.erb within layouts/application
+  [1m[36mEmprestimo Load (0.8ms)[0m  [1m[34mSELECT  "emprestimos".* FROM "emprestimos" LIMIT ? OFFSET ?[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/emprestimos/index.html.erb:19
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "emprestimos"[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/kaminari-activerecord-1.1.1/lib/kaminari/activerecord/active_record_relation_methods.rb:33
+  Rendered emprestimos/index.html.erb within layouts/application (89.2ms)
+Completed 200 OK in 608ms (Views: 603.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/emprestimos/48/edit" for 127.0.0.1 at 2018-06-09 11:24:41 -0300
+Processing by EmprestimosController#edit as HTML
+  Parameters: {"id"=>"48"}
+  [1m[36mEmprestimo Load (0.5ms)[0m  [1m[34mSELECT  "emprestimos".* FROM "emprestimos" WHERE "emprestimos"."id" = ? LIMIT ?[0m  [["id", 48], ["LIMIT", 1]]
+  ↳ app/controllers/emprestimos_controller.rb:88
+  Rendering emprestimos/edit.html.erb within layouts/application
+  Rendered emprestimos/edit.html.erb within layouts/application (152.1ms)
+Completed 200 OK in 747ms (Views: 689.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-09 11:24:50 -0300
+Processing by BemVindoController#index as HTML
+  Rendering bem_vindo/index.html.erb within layouts/application
+  Rendered bem_vindo/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 519ms (Views: 499.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/alunos" for 127.0.0.1 at 2018-06-09 11:24:54 -0300
+Processing by AlunosController#index as HTML
+  Rendering alunos/index.html.erb within layouts/application
+  [1m[36mAluno Load (16.0ms)[0m  [1m[34mSELECT  "alunos".* FROM "alunos" LIMIT ? OFFSET ?[0m  [["LIMIT", 15], ["OFFSET", 0]]
+  ↳ app/views/alunos/index.html.erb:17
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "alunos"[0m
+  ↳ /usr/lib/ruby/gems/2.5.0/gems/kaminari-activerecord-1.1.1/lib/kaminari/activerecord/active_record_relation_methods.rb:33
+  Rendered alunos/index.html.erb within layouts/application (144.6ms)
+Completed 200 OK in 718ms (Views: 678.0ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/alunos/1" for 127.0.0.1 at 2018-06-09 11:24:57 -0300
+Processing by AlunosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAluno Load (0.7ms)[0m  [1m[34mSELECT  "alunos".* FROM "alunos" WHERE "alunos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alunos_controller.rb:83
+  Rendering alunos/show.html.erb within layouts/application
+  Rendered alunos/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 522ms (Views: 499.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/alunos/1/edit" for 127.0.0.1 at 2018-06-09 11:25:00 -0300
+Processing by AlunosController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAluno Load (3.1ms)[0m  [1m[34mSELECT  "alunos".* FROM "alunos" WHERE "alunos"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/alunos_controller.rb:83
+  Rendering alunos/edit.html.erb within layouts/application
+  Rendered alunos/_form.html.erb (10.0ms)
+  Rendered alunos/edit.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 528ms (Views: 513.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-09 11:25:05 -0300
+Processing by BemVindoController#index as HTML
+  Rendering bem_vindo/index.html.erb within layouts/application
+  Rendered bem_vindo/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 499ms (Views: 496.6ms | ActiveRecord: 0.0ms)
+
+
