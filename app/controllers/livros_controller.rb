@@ -5,6 +5,13 @@ class LivrosController < ApplicationController
   # GET /livros.json
   def index
     @livros = Livro.all.page params[:page]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = LivrosPdf.new(@livros)
+        send_data pdf.render, type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /livros/1

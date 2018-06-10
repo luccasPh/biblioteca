@@ -1,0 +1,39 @@
+<div class="jumbotron" style="
+    width: 300px;
+    margin-left: 450px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+    <h3>Sistema login</h3>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <!--
+      <%- if devise_mapping.registerable? %>
+        <%= link_to 'Sign up', new_registration_path(resource_name), class: 'right'  %>
+      <% end -%>
+      -->
+      <%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <!--
+      <%- if devise_mapping.recoverable? %>
+        <%= link_to "Forgot password?", new_password_path(resource_name), class: 'right' %>
+      <% end -%>
+      -->
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+      <%= f.submit 'Entra', :class => 'btn btn-primary' %>
+      <% if devise_mapping.rememberable? -%>
+        <div class="checkbox" style="width:150px">
+          <label>
+            <%= f.check_box :remember_me %> Lembre-se
+          </label>
+        </div>
+      <% end -%>
+  <% end %>
+</div>

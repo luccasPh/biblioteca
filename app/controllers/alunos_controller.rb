@@ -5,6 +5,13 @@ class AlunosController < ApplicationController
   # GET /alunos.json
   def index
     @alunos = Aluno.all.page params[:page]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = AlunosPdf.new(@alunos)
+        send_data pdf.render, type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /alunos/1

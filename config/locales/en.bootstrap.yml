@@ -10,7 +10,7 @@ pt-BR:
   helpers:
     actions: "Actions"
     links:
-      show: "Visualizar"
+      show: "Dados"
       back: "Voltar"
       cancel: "Cancelar"
       confirm: "Você tem certeza? Todos os dados seram deletados"

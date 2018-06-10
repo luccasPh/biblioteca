@@ -5,6 +5,13 @@ class EmprestimosController < ApplicationController
   # GET /emprestimos.json
   def index
     @emprestimos = Emprestimo.all.page params[:page]
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EmprestimosPdf.new(@emprestimos)
+        send_data pdf.render, type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /emprestimos/1
@@ -77,7 +84,7 @@ class EmprestimosController < ApplicationController
   def destroy
     @emprestimo.destroy
     respond_to do |format|
-      format.html { redirect_to emprestimos_url, notice: 'Emprestimo foi excluido com sucesso.' }
+      format.html { redirect_to emprestimos_url, notice: 'Livro devolvido com sucesso.' }
       format.json { head :no_content }
     end
   end

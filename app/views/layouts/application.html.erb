@@ -27,22 +27,38 @@
       bottom: 333px;">
       <div calss="navbar-inner">
         <div class="container" style="
-        margin-left: 90.500;
-        margin-right: 90.500;
         padding-left: 0px;
         padding-right: 0px;
+        margin-left: 40px;
+        margin-right: 40px;
+        width: 1270px;
         ">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" style="color: #ffffff">Biblioteca</a>
+          <a class="navbar-brand" style="
+            padding-right: 0px;
+            padding-left: 0px;
+        "><img src="https://cdn.icon-icons.com/icons2/145/PNG/256/books_21468.png" class="img-fluid" style="margin-bottom: 30px;width: 30px;"></a>
+          <a class="navbar-brand" href="/" style="color: #ffffff;padding-left: 0px;padding-right: 0px;">Biblioteca</a>
           <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Emprestimos", emprestimos_path%></li>
-              <li><%= link_to "Alunos", alunos_path %></li>
-              <li><%= link_to "Livros", livros_path %></li>
+              <p class="navbar-text pull-right">
+                <% if user_signed_in? %>
+                  <%= link_to "Emprestimos", emprestimos_path%> |
+                  <%= link_to "Alunos", alunos_path %> |
+                  <%= link_to "Livros", livros_path, :style => "margin-right: 695px;"%>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2000px-User_icon_2.svg.png" 
+                  class="img-fluid" style="margin-bottom: 0px;width: 30px;"><strong><%= current_user.name %></strong>
+                  <%= link_to 'Editar', edit_user_registration_path, :class => 'navbar-link' %> |
+                  <%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+                <% else %>
+                  <%= link_to "Cadastra", new_user_registration_path, :class => 'navbar-link'  %> |
+                  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                <% end %>
+              </p>
             </ul>
           </div>
         </div>
@@ -63,7 +79,7 @@
       </div><!--/row-->
       <hr>
       <footer>
-        <p>&copy; Company 2018</p>
+        <p>&copy; Quero10 2018</p>
       </footer>
 
     </div> <!-- /container -->

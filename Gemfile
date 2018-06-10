@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
-
+#Fast, Nimble PDF Writer for Ruby 
+gem 'prawn'
+gem 'prawn-table'
+#Flexible authentication solution for Rails with Warden.
+gem 'devise'
 #Bootstrap form helpers for Rails 3.1+
 gem 'bootstrap-form-helpers-rails', :git => 'https://github.com/johnu/bootstrap-form-helpers-rails.git'
 #A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps

@@ -39,3 +39,4 @@
 <%= link_to t('.back', :default => t("helpers.links.back")),
             root_path,
             :class => 'btn btn-primary' %>
+<%= link_to "Gerar PDF", livros_path(@livro, format: "pdf"), :class => 'btn btn-warning'%>
