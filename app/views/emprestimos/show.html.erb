@@ -12,7 +12,8 @@
     margin-bottom: 20px;
 ">
     <dt><strong><%= model_class.human_attribute_name(:aluno) %>:</strong></dt>
-    <dd><%= @emprestimo.aluno %></dd>
+    <% aluno = @emprestimo.aluno %>
+    <dd><%= link_to aluno.nome, aluno_path(aluno) %></dd>
   </div>
   <div class="jumbotron"style="
     padding-top: 10px;
@@ -32,7 +33,8 @@
     margin-bottom: 20px;
 ">
     <dt><strong><%= model_class.human_attribute_name(:livro) %>:</strong></dt>
-    <dd><%= @emprestimo.livro %></dd>
+    <% livro = @emprestimo.livro %>
+    <dd><%= link_to livro.titulo, livro_path(livro) %></dd>
   </div>
   <div class="jumbotron"style="
     padding-top: 10px;

@@ -11,8 +11,8 @@
     padding-right: 10px;
     margin-bottom: 20px;
 ">
-    <dt style="width: 90px;"><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
-    <dd style="margin-left: 110px;"><%= @aluno.nome %></dd>
+    <dt style="width: 110px;"><strong><%= model_class.human_attribute_name(:nome) %>:</strong></dt>
+    <dd style="margin-left: 120px;"><%= @aluno.nome %></dd>
   </div>
   <div class="jumbotron"style="
     padding-top: 10px;
@@ -21,8 +21,8 @@
     padding-right: 10px;
     margin-bottom: 20px;
 ">
-    <dt style="width: 90px;"><strong><%= model_class.human_attribute_name(:matricula) %>:</strong></dt>
-    <dd style="margin-left: 110px;"><%= @aluno.matricula %></dd>
+    <dt style="width: 110px;"><strong><%= model_class.human_attribute_name(:matricula) %>:</strong></dt>
+    <dd style="margin-left: 120px;"><%= @aluno.matricula %></dd>
   </div>
   <div class="jumbotron"style="
     padding-top: 10px;
@@ -31,8 +31,8 @@
     padding-right: 10px;
     margin-bottom: 20px;
 ">
-    <dt style="width: 90px;"><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
-    <dd style="margin-left: 110px;"><%= @aluno.email %></dd>
+    <dt style="width: 110px;"><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+    <dd style="margin-left: 120px;"><%= @aluno.email %></dd>
   </div>
   <div class="jumbotron"style="
     padding-top: 10px;
@@ -41,10 +41,23 @@
     padding-right: 10px;
     margin-bottom: 20px;
 ">
-    <dt style="width: 90px;"><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
-    <dd style="margin-left: 110px;"><%= @aluno.telefone %></dd>
+    <dt style="width: 110px;"><strong><%= model_class.human_attribute_name(:telefone) %>:</strong></dt>
+    <dd style="margin-left: 120px;"><%= @aluno.telefone %></dd>
+  </div>
+  <div class="jumbotron"style="
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+">
+    <dt style="width: 110px;"><strong><%= model_class.human_attribute_name(:emprestimos) %>:</strong></dt>
+    <% @aluno.emprestimos.each do |emprestimos|%>
+        <dd style="margin-left: 120px;"><%= link_to emprestimos.livro_titulo, emprestimo_path(emprestimos)%></dd>
+    <% end %>
   </div>
 </dl>
+
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               alunos_path, :class => 'btn btn-default'  %>

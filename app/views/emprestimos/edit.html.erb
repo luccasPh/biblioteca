@@ -19,55 +19,65 @@
       </div>
     </div>
   <% end %>
+  
+  <div class="jumbotron" style="
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    width: 360px;
+    margin-bottom: 0px;
+    ">
 
-  <div class="form-group">
-    <%= f.label :aluno, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :aluno, :class => 'form-control' %>
+    <div class="form-group">
+     <label for="emprestimo_aluno_nome">Aluno:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 300px;">
+        <%= f.text_field :aluno_nome, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:aluno_nome) %>
     </div>
-    <%=f.error_span(:aluno) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :matricula, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :matricula, :class => 'form-control' %>
+    <div class="form-group">
+      <label for="emprestimo_matricula">Matricula:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.text_field :matricula, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:matricula) %>
     </div>
-    <%=f.error_span(:matricula) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :livro, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :livro, :class => 'form-control' %>
+    <div class="form-group">
+      <label for="emprestimo_livro_titulo">Livro:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 300px;">
+        <%= f.text_field :livro_titulo, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:livro_titulo) %>
     </div>
-    <%=f.error_span(:livro) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :codigo, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :codigo, :class => 'form-control' %>
+    <div class="form-group">
+      <label for="emprestimo_codigo">Codigo:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.text_field :codigo, :class => 'form-control' %>
+      </div>
+      <%=f.error_span(:codigo) %>
     </div>
-    <%=f.error_span(:codigo) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :data_do_emprestimo, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.date_field :data_emprestimo, :id => "datepicker" %>
+    <div class="form-group">
+      <label for="emprestimo_data_emprestimo">Data do emprestimo:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.date_field :data_emprestimo, :id => "datepicker" %>
+      </div>
+      <%=f.error_span(:data_emprestimo) %>
     </div>
-    <%=f.error_span(:data_emprestimo) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :data_da_devoluncao, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.date_field :data_devoluncao, :id => "datepicker" %>
+    <div class="form-group">
+      <label for="emprestimo_devoluncao">Data da devolunção:</label>
+      <div class="col-lg-10" style="padding-left: 0px;width: 250px;">
+        <%= f.date_field :data_devoluncao, :id => "datepicker" %>
+      </div>
+      <%=f.error_span(:data_devoluncao) %>
     </div>
-    <%=f.error_span(:data_devoluncao) %>
-  </div>
 
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                root_path, :class => 'btn btn-default' %>
+    <div class="form-group">
+      <div class="">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  root_path, :class => 'btn btn-default' %>
+      </div>
     </div>
   </div>
 

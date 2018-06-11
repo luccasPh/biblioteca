@@ -50,9 +50,11 @@ class EmprestimosController < ApplicationController
         livro = Livro.where(codigo: @emprestimo.codigo).first
 
         # Emprestimo aluno e livro recebe os valores do aluno nome e livro titulo e data do emprestimo receber data atual
-        @emprestimo.aluno = aluno.nome
-        @emprestimo.livro = livro.titulo
+        @emprestimo.aluno_nome = aluno.nome
+        @emprestimo.livro_titulo = livro.titulo
         @emprestimo.data_emprestimo = Time.now.strftime("%Y-%m-%d")
+        @emprestimo.aluno = aluno
+        @emprestimo.livro = livro
 
         if @emprestimo.save
           format.html { redirect_to @emprestimo, notice: 'Emprestimo foi cadastrado com sucesso.' }
@@ -64,17 +66,40 @@ class EmprestimosController < ApplicationController
       end
     end
   end
-
+  
   # PATCH/PUT /emprestimos/1
   # PATCH/PUT /emprestimos/1.json
   def update
     respond_to do |format|
-      if @emprestimo.update(emprestimo_params)
-        format.html { redirect_to @emprestimo, notice: 'Emprestimo foi atualizado com sucesso.' }
-        format.json { render :show, status: :ok, location: @emprestimo }
+       # Se aluno não existe não banco dados ou um livro uma messagem informativa e lançada para o usuario
+       if !Aluno.where(matricula: @emprestimo.matricula).exists?
+        format.html { redirect_to new_emprestimo_path, alert: "Matricula incorreta ou não cadastrada." }
+        format.json { head :no_content }
+      elsif !Livro.where(codigo: @emprestimo.codigo).exists?
+        format.html { redirect_to new_emprestimo_path, alert: "Codigo incorreto ou não cadastrado." }
+        format.json { head :no_content }
+      elsif @emprestimo.data_devoluncao.nil?
+        format.html { redirect_to new_emprestimo_path, alert: "Selecione uma data para devolução." }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
-        format.json { render json: @emprestimo.errors, status: :unprocessable_entity }
+        # Pesquisa no banco da dados aluno e livro com o numero da matricula do aluno e codigo do livro 
+        aluno = Aluno.where(matricula: @emprestimo.matricula).first
+        livro = Livro.where(codigo: @emprestimo.codigo).first
+
+        # Emprestimo aluno e livro recebe os valores do aluno nome e livro titulo e data do emprestimo receber data atual
+        @emprestimo.aluno_nome = aluno.nome
+        @emprestimo.livro_titulo = livro.titulo
+        @emprestimo.data_emprestimo = Time.now.strftime("%Y-%m-%d")
+        @emprestimo.aluno = aluno
+        @emprestimo.livro = livro
+
+        if @emprestimo.update(emprestimo_params)
+          format.html { redirect_to @emprestimo, notice: 'Emprestimo foi atualizado com sucesso.' }
+          format.json { render :show, status: :ok, location: @emprestimo }
+        else
+          format.html { render :edit }
+          format.json { render json: @emprestimo.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -97,6 +122,6 @@ class EmprestimosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def emprestimo_params
-      params.require(:emprestimo).permit(:aluno, :matricula, :livro, :codigo, :data_emprestimo, :data_devoluncao)
+      params.require(:emprestimo).permit(:aluno_nome, :matricula, :livro_titulo, :codigo, :data_emprestimo, :data_devoluncao, :aluno_id, :livro_id)
     end
 end

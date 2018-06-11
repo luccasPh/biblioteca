@@ -19,9 +19,9 @@
     <% @emprestimos.each do |emprestimo| %>
       <tr>
         <td><%= n += 1%></td>
-        <td><%= emprestimo.aluno %></td>
+        <td><%= link_to emprestimo.aluno_nome, aluno_path(emprestimo.aluno) %></td>
         <td><%= emprestimo.matricula %></td>
-        <td><%= emprestimo.livro %></td>
+        <td><%= link_to emprestimo.livro_titulo, livro_path(emprestimo.livro) %></td>
         <td><%= emprestimo.codigo %></td>
         <td><%= l(emprestimo.data_emprestimo) %></td>
         <td><%= l(emprestimo.data_devoluncao) %></td>

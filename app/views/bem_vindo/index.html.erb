@@ -1,28 +1,19 @@
-<div class="container" style="
-    width: 736px;
-    ">
-    
-      <!-- Main hero unit for a primary marketing message or call to action -->
-    <div class="jumbotron" style="
-        padding-left: 30px;
-        padding-right: 30px;
-        padding-top: 28px;
-        padding-bottom: 28px;
-        ">
-        <h1 class="display-3 text-center" style="margin-bottom: 8px;margin-top: 0px;">BEM VINDO</h1>
-        <hr>
-        <img src="https://preview.ibb.co/m6wVXo/Library_bookshelf_books_1920x1080_3.jpg" class="img-fluid" style="margin-bottom: 30px;">
-        <hr>
-        <% if user_signed_in? %>
-            <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" style="
-                margin-left: 40px;
-                margin-right: 40px;
-                ">
-                <%= link_to "Cadastra Emprestimo", new_emprestimo_path, :class => "btn btn-success", :style => "color: #ffffff" %>
-                <%= link_to "Cadastra Aluno", new_aluno_path, :class => "btn btn-success", :style => "color: #ffffff" %>
-                <%= link_to "Cadastra Livro", new_livro_path, :class => "btn btn-success", :style => "color: #ffffff" %>
-            </div>
-        <% end %>
+<body background="https://images6.alphacoders.com/306/thumb-1920-306638.jpg" style="color:white;">
+    <div class="jumbotron" style="background-color: rgba(0,0,0,0.5);">
+    	<h1 class="small">Bem-Vindo à <span class="bold">Biblioteca</span></h1>
+    	<p class="big">da Universidade Estadual do Acre</p>
     </div>
-<div>
+
+    <% if user_signed_in? %>
+        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example" style="
+            margin-left: 40px;
+            margin-right: 40px;
+            ">
+            <%= link_to "Cadastra Emprestimo", new_emprestimo_path, :class => "btn btn-success", :style => "color: #ffffff" %>
+            <%= link_to "Cadastra Aluno", new_aluno_path, :class => "btn btn-success", :style => "color: #ffffff" %>
+            <%= link_to "Cadastra Livro", new_livro_path, :class => "btn btn-success", :style => "color: #ffffff" %>
+        </div>
+    <% end %>
+    </div>
+</body>
 
