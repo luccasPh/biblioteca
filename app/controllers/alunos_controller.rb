@@ -5,13 +5,7 @@ class AlunosController < ApplicationController
   # GET /alunos.json
   def index
     @alunos = Aluno.all.page params[:page]
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = AlunosPdf.new(@alunos)
-        send_data pdf.render, type: "application/pdf", disposition: "inline"
-      end
-    end
+    gera_pdf(@alunos)
   end
 
   # GET /alunos/1
@@ -32,21 +26,10 @@ class AlunosController < ApplicationController
   # POST /alunos.json
   def create
     @aluno = Aluno.new(aluno_params)
-    puts @aluno.matricula.digits.count
-    puts @aluno.matricula.class
 
     respond_to do |format|
-      #Verifica se todos os campos foram prenchido
-      if @aluno.nome.empty? || @aluno.matricula.nil? || @aluno.email.empty? || @aluno.telefone.empty?
-        format.html { redirect_to new_aluno_path, alert: "Todos os campos devem ser preenchido." }
-        format.json { head :no_content }
-      #Verifica se a matricula esta correta
-      elsif @aluno.matricula.digits.count < 7
-        format.html { redirect_to new_aluno_path, alert: "Matricula incorreta." }
-        format.json { head :no_content }
-      #Verifica se o aluno já esta cadastrado
-      elsif Aluno.where(matricula: @aluno.matricula).exists?
-        format.html { redirect_to new_aluno_path, alert: "Aluno já cadastrado no sistema." }
+      if validar_dados(@aluno)
+        format.html { redirect_to new_aluno_path, alert: @error }
         format.json { head :no_content }
       else
         if @aluno.save

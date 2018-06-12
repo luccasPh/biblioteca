@@ -5,13 +5,7 @@ class LivrosController < ApplicationController
   # GET /livros.json
   def index
     @livros = Livro.all.page params[:page]
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = LivrosPdf.new(@livros)
-        send_data pdf.render, type: "application/pdf", disposition: "inline"
-      end
-    end
+    gerar_pdf(@livros)
   end
 
   # GET /livros/1
@@ -34,17 +28,8 @@ class LivrosController < ApplicationController
     @livro = Livro.new(livro_params)
 
     respond_to do |format|
-       #Verifica se todos os campos foram prenchido
-       if @livro.titulo.empty? || @livro.codigo.nil? || @livro.autor.empty?
-        format.html { redirect_to new_livro_path, alert: "Todos os campos devem ser preenchido." }
-        format.json { head :no_content }
-      #Verifica se a matricula esta correta
-      elsif @livro.codigo.digits.count < 6
-        format.html { redirect_to new_livro_path, alert: "Codigo incorreta." }
-        format.json { head :no_content }
-      #Verifica se o aluno já esta cadastrado
-      elsif Livro.where(codigo: @livro.codigo).exists?
-        format.html { redirect_to new_livro_path, alert: "Livro já cadastrado no sistema." }
+       if validar_dados(@livro)
+        format.html { redirect_to new_livro_path, alert: @error }
         format.json { head :no_content }
       else
         if @livro.save

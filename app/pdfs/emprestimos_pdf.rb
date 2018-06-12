@@ -7,7 +7,7 @@ class EmprestimosPdf < Prawn::Document
 
     def line_items
         move_down 20
-        text "Data #{Time.now.strftime("%d/%m/%Y")}"
+        text "Data da consuta #{Time.now.strftime("%d/%m/%Y")}"
         table line_item_rows do
             row(0).font_style = :bold
             columns(1..6).align = :left
@@ -21,7 +21,7 @@ class EmprestimosPdf < Prawn::Document
     def line_item_rows
         [["Aluno", "Matricula", "Livro", "Codigo", "Data do emprestimo", "Data da devolução"]] + 
         @emprestimo.map do |item|
-            [item.aluno, item.matricula, item.livro, item.codigo, item.data_emprestimo.strftime("%d/%m/%Y"), item.data_devoluncao.strftime("%d/%m/%Y")]
+            [item.aluno_nome, item.matricula, item.livro_titulo, item.codigo, item.data_emprestimo.strftime("%d/%m/%Y"), item.data_devoluncao.strftime("%d/%m/%Y")]
         end
     end
 end
