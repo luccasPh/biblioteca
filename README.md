@@ -8,7 +8,7 @@ Para testar o aplicativo em seu ambiente local utilize o Docker e execute o segu
 git clone https://github.com/luccasPh/biblioteca.git
 cd biblioteca
 docker-compose build
-sudo docker-compose run web rake db:migrate
+docker-compose run web rake db:migrate
 docker-compose up
 ```
 
